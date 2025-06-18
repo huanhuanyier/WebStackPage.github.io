@@ -124,16 +124,16 @@
     /* 响应式：屏幕宽度小于900px时，只显示图标，隐藏文本，并让图标居中 */
     @media (max-width: 900px) {
         #main-menu.main-menu > li > a {
-            justify-content: center; /* 图标居中 */
-            padding-left: 0;
+            justify-content: flex-start; /* 左对齐 */
+            padding-left: 0; /* 可根据需要调整 */
             padding-right: 0;
         }
         #main-menu.main-menu > li > a .title {
-            display: none; /* 隐藏文本 */
+            display: block; /* 显示文本 */
         }
         #main-menu.main-menu > li > a i {
-            margin-right: 0; /* 去除图标和文本间距 */
-            min-width: 0;
+            margin-right: 18px; /* 恢复图标和文本间距 */
+            min-width: 28px;
         }
     }
 
@@ -144,6 +144,20 @@
     /* 当菜单栏收起时，切换显示 */
     .sidebar-menu.collapsed .logo-expanded { display: none; }
     .sidebar-menu.collapsed .logo-collapsed { display: block; }
+
+    /* 侧边栏收起时，只显示图标，隐藏文本，并让图标居中 */
+    .sidebar-menu.collapsed #main-menu.main-menu > li > a {
+        justify-content: center; /* 图标居中 */
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .sidebar-menu.collapsed #main-menu.main-menu > li > a .title {
+        display: none; /* 隐藏文本 */
+    }
+    .sidebar-menu.collapsed #main-menu.main-menu > li > a i {
+        margin-right: 0; /* 去除图标和文本间距 */
+        min-width: 0;
+    }
     </style>
 </head>
 
@@ -158,7 +172,7 @@
                     <div class="logo">
                         <!-- 展开时显示 -->
                         <a href="index.html" class="logo-expanded">
-                            <img src="../assets/images/logo_BST.png" width="100%" alt="" />
+                            <img src="../assets/images/logo_BST_en.png" width="100%" alt="" />
                         </a>
                         <!-- 收起时显示 -->
                         <a href="index.html" class="logo-collapsed">
@@ -167,12 +181,14 @@
                     </div>
                     <!-- 移动端菜单切换按钮区域 - 在移动设备上显示 -->
                     <div class="mobile-menu-toggle visible-xs">
-                        <!-- User Info Menu Toggle Button -->
+                        <!-- 用户信息菜单切换按钮：点击后可展开或收起用户信息相关的菜单（如设置、个人资料等） -->
                         <a href="#" data-toggle="user-info-menu">
+                            <!-- 齿轮图标，表示设置或用户信息入口 -->
                             <i class="linecons-cog"></i>
                         </a>
-                        <!-- Mobile Menu Expand/Collapse Button -->
+                        <!-- 移动端主菜单展开/收起按钮：在移动设备上点击可展开或收起主导航菜单 -->
                         <a href="#" data-toggle="mobile-menu">
+                            <!-- 三横线图标，常用于表示菜单（汉堡菜单） -->
                             <i class="fa-bars"></i>
                         </a>
                     </div>
@@ -258,13 +274,6 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                </ul>
-                <ul class="user-info-menu right-links list-inline list-unstyled">
-                    <li class="hidden-sm hidden-xs">
-                        <a href="https://github.com/BuildSiteToolsPage/BuildSiteToolsPage.github.io" target="_blank">
-                            <i class="fa-github"></i> GitHub
-                        </a>
                     </li>
                 </ul>
             </nav>
